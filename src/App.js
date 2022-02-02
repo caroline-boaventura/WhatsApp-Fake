@@ -1,25 +1,39 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import Contacts from './components/contacts/Contacts';
+import Chat from './components/chat/Chat';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      contactName: '',
+      picture: '',
+      conversation: {}
+    }
+
+    this.changeContactName = this.changeContactName.bind(this);
+  }
+
+  changeContactName = (name, picture, conversation) => {
+    this.setState({
+      contactName: name,
+      picture,
+      conversation
+    });
+  }
+
+  render() {
+    const { contactName, picture, conversation } = this.state;
+
+    return (
+      <div className="container-app">
+        <Contacts changeContactName={this.changeContactName} />
+        <Chat contactName={contactName} picture={picture} conversation={conversation} />
+      </div>
+    )
+  }
 }
 
 export default App;
