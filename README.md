@@ -8,6 +8,6 @@ Deploy: https://whataspp-fake.herokuapp.com/
 
 ### `npm install`
 
-## Iniciando o projeto
+## Inicializando a aplicação
 
 ### `npm start`
